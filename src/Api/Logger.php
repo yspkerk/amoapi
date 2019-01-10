@@ -46,7 +46,7 @@ class Logger
 		if ($this->options['chunk'] != '') {
 			$this->path .= date($this->options['chunk'].'/', time());
 		}
-        $this->path = AMOAPI_ROOT.$this->path;
+        $this->path = AMOAPI_LOG;
         if (!file_exists($this->path)) {
             mkdir($this->path);
         }

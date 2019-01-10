@@ -60,7 +60,7 @@ class QueryModel
 		$this->attributes['method'] = 'GET';
 		$this->attributes['latency'] = 1;
 		$this->attributes['curl'] = \curl_init();
-		$this->attributes['cookie_file'] = AMOAPI_ROOT.'/Cookies/'.$this->instance()->getAuth('domain').'.cookie';
+		$this->attributes['cookie_file'] = AMOAPI_COOKIES.'/'.$this->instance()->getAuth('domain').'.cookie';
 		curl_setopt_array($this->curl, [
 			CURLOPT_AUTOREFERER => 1,
 			CURLOPT_USERAGENT => 'Amoapi v.7 ('.$this->instance()->getAuth('domain').')',

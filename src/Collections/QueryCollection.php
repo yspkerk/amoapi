@@ -8,12 +8,12 @@ use Ufee\Amo\Amoapi,
 
 class QueryCollection extends \Ufee\Amo\Base\Collections\Collection
 {
-    protected 
+    protected
         $cache_path = '/Cache/',
         $_listener,
         $logger = null,
         $_logs = false;
-    
+
     /**
      * Boot instance
 	 * @param Amoapi $instance
@@ -21,11 +21,11 @@ class QueryCollection extends \Ufee\Amo\Base\Collections\Collection
     public function boot(Amoapi $instance)
     {
         $this->logger = Api\Logger::getInstance($instance->getAuth('domain').'.log');
-        $this->cache_path = AMOAPI_ROOT.$this->cache_path.$instance->getAuth('domain');
-        if (!file_exists($this->cache_path)) {
-            mkdir($this->cache_path);
+        $this->cache_path = AMOAPI_CACHE.'/'.$instance->getAuth('domain');
+        if (!file_exists($this->cache_path.'/')) {
+            mkdir($this->cache_path.'/');
         }
-        if ($caches = glob($this->cache_path.'/*.cache')) {
+        if ($caches = glob(AMOAPI_CACHE.'/*.cache')) {
             foreach ($caches as $cache_file) {
                 if ($cacheQuery = unserialize(file_get_contents($cache_file))) {
                     if ($cacheQuery->getService()->canCache() && microtime(1)-$cacheQuery->end_time <= $cacheQuery->getService()->cacheTime()) {
@@ -37,7 +37,7 @@ class QueryCollection extends \Ufee\Amo\Base\Collections\Collection
             }
         }
     }
-    
+
     /**
      * Push new queries
 	 * @param Query $query
@@ -77,7 +77,7 @@ class QueryCollection extends \Ufee\Amo\Base\Collections\Collection
 	 * @return Query|null
      */
 	public function getCached($hash)
-	{    
+	{
         $queries = $this->find('hash', $hash)->filter(function(Api\Query $query) {
             return $query->getService()->canCache() && microtime(1)-$query->end_time <= $query->getService()->cacheTime();
         });
@@ -124,7 +124,7 @@ class QueryCollection extends \Ufee\Amo\Base\Collections\Collection
         $this->items = [];
         return $this;
     }
-    
+
     /**
      * Cache queries
 	 * @param Query $query

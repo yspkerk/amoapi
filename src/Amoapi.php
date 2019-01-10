@@ -9,6 +9,16 @@ namespace Ufee\Amo;
 if (!defined('AMOAPI_ROOT')) {
 	define('AMOAPI_ROOT', dirname(__FILE__));
 }
+if (!defined('AMOAPI_CACHE')) {
+     define('AMOAPI_CACHE', AMOAPI_ROOT.'/Cache');
+}
+if (!defined('AMOAPI_COOKIES')) {
+     define('AMOAPI_COOKIES', AMOAPI_ROOT.'/Cookies');
+}
+if (!defined('AMOAPI_LOG')) {
+     define('AMOAPI_LOG', AMOAPI_ROOT.'/Log');
+}
+
 /**
  * @property \Ufee\Amo\Collections\QueryCollection $queries
  * @property \Ufee\Amo\Models\Account $account
@@ -52,7 +62,7 @@ class Amoapi
 	];
 	private $_account;
 	private $_queries;
-	
+
     /**
      * Constructor
 	 * @param array $account
@@ -61,7 +71,7 @@ class Amoapi
     {
 		$this->_account = $account;
     }
-	
+
     /**
      * Get account auth data
 	 * @param string|null $key
@@ -105,8 +115,8 @@ class Amoapi
 		}
         if (!isset(self::$_instances[$account['id']])) {
 			self::$_instances[$account['id']] = new static($account);
-			if (file_exists(AMOAPI_ROOT.'/Cookies/'.$account['domain'].'.cookie')) {
-				@unlink(AMOAPI_ROOT.'/Cookies/'.$account['domain'].'.cookie');
+			if (file_exists(AMOAPI_COOKIES.'/'.$account['domain'].'.cookie')) {
+				@unlink(AMOAPI_COOKIES.'/'.$account['domain'].'.cookie');
 			}
 		}
 		$instance = self::getInstance($account['id']);
@@ -130,7 +140,7 @@ class Amoapi
 		}
 		return self::$_instances[$account_id];
 	}
-	
+
     /**
      * Call Service Methods
 	 * @param string $service_name
@@ -147,7 +157,7 @@ class Amoapi
 		}
 		return $service;
 	}
-	
+
     /**
      * Get Service
 	 * @param string $target

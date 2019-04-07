@@ -299,6 +299,7 @@ $copy = clone $company;
 $copy->name = 'New company';
 $copy->save();
 ```
+## Работа с неразобранное
 Создать неразобранное
 ```php
 $incoming_lead = $amo->incomingLeads()->create();

@@ -34,10 +34,12 @@ if (!defined('AMOAPI_LOG')) {
  * @property \Ufee\Amo\Collections\WebhookCollection $webhooks
  * @method \Ufee\Amo\Services\Account account()
  * @method \Ufee\Amo\Services\Leads leads()
+ * @method \Ufee\Amo\Services\IncomingLeads incomingLeads()
  * @method \Ufee\Amo\Services\Contacts contacts()
  * @method \Ufee\Amo\Services\Companies companies()
  * @method \Ufee\Amo\Services\Tasks tasks()
  * @method \Ufee\Amo\Services\Notes notes()
+ * @method \Ufee\Amo\Services\Calls calls()
  * @method \Ufee\Amo\Services\Customers customers()
  * @method \Ufee\Amo\Services\Transactions transactions()
  * @method \Ufee\Amo\Services\Catalogs catalogs()
@@ -50,10 +52,12 @@ class Amoapi
 	private $services = [
 		'account',
 		'leads',
+        	'incomingLeads',
 		'contacts',
 		'companies',
 		'tasks',
 		'notes',
+		'calls',
 		'customers',
 		'transactions',
 		'catalogs',

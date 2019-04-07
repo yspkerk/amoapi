@@ -299,6 +299,26 @@ $copy = clone $company;
 $copy->name = 'New company';
 $copy->save();
 ```
+Создать неразобранное
+```php
+$incoming_lead = $amo->incomingLeads()->create();
+$incoming_lead->source_name = 'Binotel source name';
+$incoming_lead->source_uid = 'uniq id',
+$incoming_lead->addInfo([
+            'to' => '901'
+            'from' => '0505055050',
+            'date_call' => '1554539239',
+            'duration' => '50',
+            'link' => 'https://my.binotel.ua/?module=cdrs&action=generateFile&fileName=11111111.mp3',
+            'service_code' => 'Bonotel',
+            'uniq' => 'LJNo328hweidjiln',
+            'add_note' => 'Binotel note'
+        ])
+$company = $amo->companies()->create();
+$company->name = 'Amoapi v7';
+$incoming_lead->addIE($company);
+$incoming_lead->save();
+```
 
 ## Работа с задачами
 Получение всех задач

@@ -4,11 +4,11 @@
  * @package   Binotel
  * @author    Sergei Yarmolyuk <sergei.yarmolyuk@gmail.com>
  * @copyright 2019 Fabrika-Klientov
- * @version   GIT: 19.4.5
+ * @version   GIT: 19.4.7
  * @link      https://fabrika-klientov.ua
  */
 
-namespace FK\Components\Amo\Collections;
+namespace Ufee\Amo\Collections;
 
 class IncomingLeadCollection extends \Ufee\Amo\Collections\ServiceCollection
 {

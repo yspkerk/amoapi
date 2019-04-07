@@ -4,23 +4,23 @@
  * @package   Binotel
  * @author    Sergei Yarmolyuk <sergei.yarmolyuk@gmail.com>
  * @copyright 2019 Fabrika-Klientov
- * @version   GIT: 19.4.5
+ * @version   GIT: 19.4.7
  * @link      https://fabrika-klientov.ua
  */
 
-namespace FK\Components\Amo\Services;
+namespace Ufee\Amo\Services;
 
-class Call extends \Ufee\Amo\Base\Services\LimitedList
+class Calls extends \Ufee\Amo\Base\Services\LimitedList
 {
 	protected static 
 		$_require = [
-			'add' => ['phone_number','direction','uniq','duration','source','call_status','call_result','link','responsible_user_id'],
+			'add' => ['phone_number','direction'],
             'update' => ['updated_at', 'upadted_by']
 		];
 	protected
 		$entity_key = 'calls',
-		$entity_model = '\FK\Components\Amo\Models\Call',
-		$entity_collection = '\FK\Components\Amo\Collections\CallCollection',
+		$entity_model = '\Ufee\Amo\Models\Call',
+		$entity_collection = '\Ufee\Amo\Collections\CallCollection',
 		$cache_time = false;
 
 

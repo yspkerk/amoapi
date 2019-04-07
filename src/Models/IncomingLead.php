@@ -4,13 +4,13 @@
  * @package   Binotel
  * @author    Sergei Yarmolyuk <sergei.yarmolyuk@gmail.com>
  * @copyright 2019 Fabrika-Klientov
- * @version   GIT: 19.4.5
+ * @version   GIT: 19.4.7
  * @link      https://fabrika-klientov.ua
  */
 
-namespace FK\Components\Amo\Models;
+namespace Ufee\Amo\Models;
 
-class IncomingLead extends \Ufee\Amo\Base\Models\ApiModel
+class IncomingLead extends \Ufee\Amo\Base\Models\ModelWithIE
 {
 	protected
 		$hidden = [
@@ -39,5 +39,14 @@ class IncomingLead extends \Ufee\Amo\Base\Models\ApiModel
     {
 		$fields = parent::toArray();
 		return $fields;
+    }
+
+    /**
+     * @param $info
+     */
+    public function addInfo($info)
+    {
+        $this->setChanged('incoming_lead_info');
+        $this->attributes['incoming_lead_info'] = $info;
     }
 }

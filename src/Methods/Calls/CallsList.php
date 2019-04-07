@@ -4,13 +4,15 @@
  * @package   Binotel
  * @author    Sergei Yarmolyuk <sergei.yarmolyuk@gmail.com>
  * @copyright 2019 Fabrika-Klientov
- * @version   GIT: 19.4.7
+ * @version   GIT: 19.4.1
  * @link      https://fabrika-klientov.ua
  */
 
-namespace Ufee\Amo\Collections;
+namespace Ufee\Amo\Methods\IncomingLeads;
 
-class CallCollection extends \Ufee\Amo\Collections\ServiceCollection
+class IncomingLeadsList extends \Ufee\Amo\Base\Methods\LimitedList
 {
-    
+	protected 
+		$url = '/api/v2/incoming_leads/sip';
+	
 }

@@ -12,26 +12,25 @@ namespace Ufee\Amo\Services;
 
 use Ufee\Amo\Base\Services\Traits;
 
-class Leads extends \Ufee\Amo\Base\Services\MainEntity
+class IncomingLeads extends \Ufee\Amo\Base\Services\MainEntity
 {
-	use Traits\SearchByName;
+	use Traits\SearchByName, Traits\SearchByPhone;
 	
 	protected static 
 		$_require = [
-			'add' => ['name'],
-			'update' => ['id', 'updated_at']
+			'add' => ['source_name'],
 		];
 	protected
-        $entity_key = 'incoming_leads',
-        $entity_model = '\FK\Components\Amo\Models\IncomingLead',
-        $entity_collection = '\FK\Components\Amo\Collections\IncomingLead',
+        $entity_key = 'incomingLeads',
+        $entity_model = '\Ufee\Amo\Models\IncomingLead',
+        $entity_collection = '\Ufee\Amo\Collections\IncomingLeadCollection',
         $cache_time = false;
 
     /**
      * Get full
 	 * @return Collection
      */
-	public function leads()
+	public function incomingLeads()
 	{
 		return $this->list->recursiveCall();
 	}

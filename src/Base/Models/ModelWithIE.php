@@ -60,6 +60,7 @@ class ModelWithIE extends ApiModel
             $class = $entity;
             $entity = array_search($entity, $this->entities_relate);
             $entity = $this->service->instance->{$entity}()->create($data);
+	    $entity->unHide('notes');
             if (!empty($data['customField'])) {
                 foreach ($data['customField'] as $field => $value) {
                     $field = (is_array($value) && !empty($value['field'])) ? $value['field'] : $field;

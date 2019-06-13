@@ -209,4 +209,15 @@ class Model
 		}
 		return $fields;
     }
+	
+    /**
+     * @param $field
+     */
+    public function unHide($field)
+    {
+        if(array_search($field, $this->hidden) !== false) {
+            array_splice($this->hidden, array_search($field, $this->hidden), 1);
+            $this->writable[] = $field;
+        }
+    }
 }

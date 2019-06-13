@@ -13,6 +13,6 @@ namespace Ufee\Amo\Methods\IncomingLeads;
 class IncomingLeadsList extends \Ufee\Amo\Base\Methods\LimitedList
 {
 	protected 
-		$url = '/api/v2/incoming_leads/sip';
+		$url = '/api/v2/incoming_leads';
 	
 }

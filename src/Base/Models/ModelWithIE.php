@@ -51,6 +51,7 @@ class ModelWithIE extends ApiModel
      */
     public function addIE($entity, $data = [])
     {
+	$data = (array)$data;    
         $class = '';
         if(is_object($entity)) {
             $class = get_class($entity);
